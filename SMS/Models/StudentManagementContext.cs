@@ -29,6 +29,7 @@ public partial class StudentManagementContext : DbContext
 
     public virtual DbSet<Teacher> Teachers { get; set; }
 
+    public virtual DbSet<Attendence> Attendences { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Data Source = UDAY; Initial Catalog = Student_Management; Integrated Security = True; Trust Server Certificate = True");
 
@@ -159,6 +160,25 @@ public partial class StudentManagementContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(25)
                 .IsUnicode(false);
+        });
+        modelBuilder.Entity<Attendence>(entity =>
+        {
+            
+            entity
+            .ToTable("Attendence")
+            .HasKey(e => e.Student_id).HasName("PK__Attenden__2A33069A8E01A867"); 
+            
+
+            entity.Property(e => e.Student_id)
+                .ValueGeneratedNever();
+            entity.Property(e => e.attendence)
+            .HasDefaultValue(0);
+
+            modelBuilder.Entity<Attendence>()
+                    .HasOne(e => e.Student)
+                    .WithOne(e => e.Attendence)
+                    .HasForeignKey<Attendence>(e => e.Student_id);
+
         });
 
         OnModelCreatingPartial(modelBuilder);

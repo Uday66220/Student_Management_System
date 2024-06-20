@@ -32,7 +32,7 @@ namespace SMS.Controllers
 
         // POST api/<StudentsController>
         [HttpPost]
-        public void Post([FromBody] Student value)
+        public void Post(Student value)
         {
             SContext.Students.Add( value);
             SContext.SaveChanges();
@@ -41,7 +41,7 @@ namespace SMS.Controllers
         // PUT api/<StudentsController>/5
         //update
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Student value)
+        public void Put(int id, Student value)
         {
             SContext.Students.Update(value);
 

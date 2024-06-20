@@ -19,5 +19,7 @@ public partial class Student
 
     public int? TotalMarks { get; set; }
 
-    public virtual Class Class { get; set; } = null!;
+    public virtual Class? Class { get; set; }
+
+    public virtual Attendence? Attendence { get; set; }
 }
