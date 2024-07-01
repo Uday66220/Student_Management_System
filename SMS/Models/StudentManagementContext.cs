@@ -90,8 +90,8 @@ public partial class StudentManagementContext : DbContext
         modelBuilder.Entity<StudentSubject>(entity =>
         {
             entity
-                .HasNoKey()
-                .ToTable("Student_Subjects");
+                .HasKey(e => e.StudentId).HasName("PK_Student_Subjects");
+                entity.ToTable("Student_Subjects");
 
             entity.Property(e => e.StudentId).HasColumnName("StudentID");
             entity.Property(e => e.SubjectId).HasColumnName("SubjectID");
