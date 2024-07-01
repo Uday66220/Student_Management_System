@@ -76,7 +76,7 @@ namespace SMS.Controllers
             {
                 SContext.Students.Add(value);
                 SContext.SaveChanges();
-                return CreatedAtAction("GetById", new { id = value.RollNo }, value);
+                return Ok("Student added Successfully");
             }
             else
             {
